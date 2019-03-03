@@ -1,6 +1,7 @@
 import {
   GraphQLString,
   GraphQLID,
+  GraphQLNonNull,
 } from 'graphql';
 import BookType from '../type/BookType';
 import Book from '../../model/Book';
@@ -19,9 +20,9 @@ const resolve = (_, args) => {
 export default {
   type: BookType,
   args: {
-    name: { type: GraphQLString },
-    genre: { type: GraphQLString },
-    authorId: { type: GraphQLID },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    genre: { type: new GraphQLNonNull(GraphQLString) },
+    authorId: { type: new GraphQLNonNull(GraphQLID) },
   },
   resolve,
 };

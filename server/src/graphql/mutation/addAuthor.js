@@ -1,6 +1,7 @@
 import {
   GraphQLString,
   GraphQLInt,
+  GraphQLNonNull,
 } from 'graphql';
 import AuthorType from '../type/AuthorType';
 import Author from '../../model/Author';
@@ -18,7 +19,7 @@ const resolve = (_, args) => {
 export default {
   type: AuthorType,
   args: {
-    name: { type: GraphQLString },
+    name: { type: new GraphQLNonNull(GraphQLString) },
     age: { type: GraphQLInt }
   },
   resolve,
