@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "author": "ghayn",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "graphql play list server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/index.js",
+    "build": "babel src --out-dir ./dist --source-maps",
+    "serve": "node ./dist/index.js",
+    "debug": "node --inspect-brk ./dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "nodemon": "^1.18.10"
+  }
+}
