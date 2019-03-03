@@ -7,6 +7,7 @@ import {
 import _ from 'lodash';
 import AuthorType from'./AuthorType';
 import BookType from './BookType';
+
 const fakeData = require('../fakeData');
 
 
@@ -42,4 +43,4 @@ const QueryType = new GraphQLObjectType({
   }),
 });
 
-module.exports = QueryType;
+export default QueryType;
