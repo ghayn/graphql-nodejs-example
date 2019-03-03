@@ -5,9 +5,8 @@ import {
   GraphQLID,
   GraphQLList,
 } from 'graphql';
-
+import Book from '../../model/Book';
 import BookType from './BookType.js';
-const fakeData = require('../fakeData');
 
 
 const AuthorType = new GraphQLObjectType({
@@ -19,8 +18,8 @@ const AuthorType = new GraphQLObjectType({
     books: {
       type: new GraphQLList(BookType),
       resolve: (self) => {
-        return fakeData.books.filter(book => book.authorId === self.id);
-      }
+        return Book.find({ authorId: self.id });
+      },
     }
   }),
 });

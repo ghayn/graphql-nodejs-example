@@ -3,10 +3,8 @@ import {
   GraphQLString,
   GraphQLID,
 } from 'graphql';
-import _ from 'lodash';
 import AuthorType from'./AuthorType';
-
-const fakeData = require('../fakeData');
+import Author from '../../model/Author';
 
 const BookType = new GraphQLObjectType({
   name: 'Book',
@@ -16,10 +14,8 @@ const BookType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     author: {
       type: AuthorType,
-      resolve: (parent) => {
-        return _.find(fakeData.authors, (author) => (
-          author.id === parent.authorId
-        ));
+      resolve: ({ authorId }) => {
+        return Author.findById(authorId);
       },
     }
   }),

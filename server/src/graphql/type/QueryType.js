@@ -4,12 +4,10 @@ import {
   GraphQLID,
   GraphQLList
 }  from 'graphql';
-import _ from 'lodash';
 import AuthorType from'./AuthorType';
 import BookType from './BookType';
-
-const fakeData = require('../fakeData');
-
+import Author from '../../model/Author';
+import Book from '../../model/Book';
 
 const QueryType = new GraphQLObjectType({
   name: 'QueryType',
@@ -17,27 +15,27 @@ const QueryType = new GraphQLObjectType({
     book: {
       type: BookType,
       args: { id: { type: GraphQLID } },
-      resolve: (parent, { id }) => {
-        return _.find(fakeData.books, (book) => (book.id === id));
+      resolve: (_, { id }) => {
+        return Book.findById(id);
       },
     },
     author: {
       type: AuthorType,
       args: { id: { type: GraphQLID } },
-      resolve: (parent, { id }) => {
-        return _.find(fakeData.authors, (author) => (author.id === id));
+      resolve: (_, { id }) => {
+        return Author.findById(id);
       },
     },
     books: {
       type: new GraphQLList(BookType),
       resolve: () => {
-        return fakeData.books;
+        return Book.find({});
       },
     },
     authors: {
       type: new GraphQLList(AuthorType),
       resolve: () => {
-        return fakeData.authors;
+        return Author.find({});
       },
     }
   }),
