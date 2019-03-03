@@ -1,9 +1,9 @@
 {
-  "name": "server",
+  "name": "graphql-nodejs-example-server",
   "author": "ghayn",
   "version": "0.0.1",
   "license": "MIT",
-  "description": "graphql play list server",
+  "description": "graphql example server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
